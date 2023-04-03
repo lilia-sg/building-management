@@ -1,6 +1,8 @@
 export const request = async (method, url, data) => {
 	const options = {};
 
+	// TODO: Error handling
+
 	if (method !== "GET") {
 		options.method = method;
 
@@ -14,10 +16,16 @@ export const request = async (method, url, data) => {
 
 	const response = await fetch(url, options);
 
-	// TODO: Error handling
 	// TODO: No content response
 	if (response.status === "204") {
 		return [];
+	}
+
+	if (response.status === 403) {
+        console.log(response);
+        
+		const err = await response.json();
+		return { errorMessage: err.message };
 	}
 
 	const result = response.json();
