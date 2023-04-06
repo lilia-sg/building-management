@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as userService from "../../services/userService";
 import { useForm } from "../hooks/useForm";
 import { FormKeys } from "../utils/constants";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
@@ -38,6 +38,7 @@ export default function Login() {
 					setUnsuccessfulLogin(res.errorMessage);
 				}
 			})
+            .catch(err => console.log(err));
 	};
 
 	return (
@@ -70,8 +71,7 @@ export default function Login() {
 			</form>
 			<div>
 				<p>
-					If you don't have profile click{" "}
-					<Link to="/register">here</Link>
+					If you don't have profile click <Link to="/register">here</Link>
 				</p>
 			</div>
 		</section>

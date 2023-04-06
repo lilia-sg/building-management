@@ -21,9 +21,7 @@ export const request = async (method, url, data) => {
 		return [];
 	}
 
-	if (response.status === 403) {
-        console.log(response);
-        
+	if (response.status === 403) {      
 		const err = await response.json();
 		return { errorMessage: err.message };
 	}
