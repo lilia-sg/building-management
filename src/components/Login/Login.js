@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import * as userService from "../../services/userService";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 import { FormKeys } from "../utils/constants";
 import { AuthContext } from "../../contexts/AuthContext";
 
