@@ -25,7 +25,10 @@ function App() {
 					<Route path="*" element={<h1>Page not found!</h1>} />
 
 					<Route element={<RouteGuard />}>
-						<Route path="/buildings" element={<Home />} />
+						<Route path="/signals" element={<Test />} />
+						<Route path="/building" element={<Test />} />
+						<Route path="/news" element={<Test />} />
+						<Route path="/tenants" element={<Test />} />
                     </Route>
 
 				</Routes>
