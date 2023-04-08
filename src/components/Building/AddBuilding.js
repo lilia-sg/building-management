@@ -30,14 +30,14 @@ export default function AddBuilding() {
 
     const [unsuccessfulCreation, setUnsuccessfulCreation] = useState(false);
 
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, user } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     const onFormSubmit = (e) => {
         e.preventDefault();        
         buildingService
-			.addNewBuilding(formValues)
+			.addNewBuilding(formValues, user.accessToken)
 			.then((res) => {
 				if (!res.errorMessage) {
 					setUnsuccessfulCreation(false);

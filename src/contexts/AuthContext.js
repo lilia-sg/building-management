@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState } from "react";
 
 // TODO: Do I need to keep the whole user or just isLoggedIn? 
 const initalAuthState = {

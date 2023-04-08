@@ -1,5 +1,16 @@
 export const FormKeys = {
     Email: "email",
-    Username: "email",
-    Password: "password"
+    Password: "password",
+    ConfirmPassword: "confirmPassword",
+    FirstName: "firstName",
+    MiddleName: "midName",
+    LastName: "lastName",
+    Phone: "phone",
+    Address: "address",
+    City: "city",
+    Country: "country",
+    BuildingName: "buildingName",
+    Floors: "floors",
+    AptCount: "aptCount",
+    AddInfo: "AddInfo",
 }
