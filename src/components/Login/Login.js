@@ -1,13 +1,14 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import * as userService from "../../services/userService";
+
 import { useForm } from "../../hooks/useForm";
-import { FormKeys } from "../utils/constants";
+import * as userService from "../../services/userService";
 import { AuthContext } from "../../contexts/AuthContext";
 import SubmitButton from "../common/SubmitButton";
 import Input from "../common/Input";
 
+import { FormKeys } from "../utils/constants";
 
 export default function Login() {
     const emptyFormValues = {
@@ -62,7 +63,7 @@ export default function Login() {
                         </div>
                         {/* TODO: Style error message */}
                         {unsuccessfullLogin && <h3>{unsuccessfullLogin}</h3>}
-                        <div className="mt-5 grid grid-cols-4 gap-x-6 gap-y-4">
+                        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4">
                             <Input 
                                 type="email" 
                                 name={FormKeys.Email} 
@@ -76,8 +77,8 @@ export default function Login() {
                                 name={FormKeys.Password} 
                                 displayLabel="Password" 
                                 size="lg" 
-                                value={formValues[FormKeys.Password]}
                                 onChangeHandler={onChangeHandler}
+                                value={formValues[FormKeys.Password]}
                                 />
                         </div>
                     </div>

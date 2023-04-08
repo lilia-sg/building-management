@@ -8,6 +8,8 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Test from "./components/Test";
 import HeaderTest from "./components/Header/HeaderTest";
+import Building from "./components/Building/Building";
+import AddBuilding from "./components/Building/AddBuilding";
 
 function App() {
 	// TODO: Min width? 
@@ -26,7 +28,8 @@ function App() {
 
 					<Route element={<RouteGuard />}>
 						<Route path="/signals" element={<Test />} />
-						<Route path="/building" element={<Test />} />
+						<Route path="/building" element={<Building />} />
+						<Route path="/building/add" element={<AddBuilding />} />
 						<Route path="/news" element={<Test />} />
 						<Route path="/tenants" element={<Test />} />
                     </Route>

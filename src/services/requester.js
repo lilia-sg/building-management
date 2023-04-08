@@ -26,10 +26,12 @@ export const request = async (method, url, data) => {
 		return { errorMessage: err.message };
 	}
 
-	const result = response.json();
 	if (!response.ok) {
-		throw result;
+		throw response;
 	}
+
+	const result = response.json();
+
 	return result;
 };
 

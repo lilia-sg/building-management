@@ -8,7 +8,9 @@ export default function Input({
 }){
 
     let spanSize;
-    if (size === "med") {
+    if (size === "sm") {
+        spanSize = "col-span-1"
+    } else if (size === "med") {
         spanSize = "col-span-2";
     } else if (size === "lg") {
         spanSize = "col-span-3";
@@ -33,6 +35,7 @@ export default function Input({
                     value={value}
                     onChange={onChangeHandler}
                     className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    autoComplete="off"
                 />
             </div>
         </div>
