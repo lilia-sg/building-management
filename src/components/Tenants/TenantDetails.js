@@ -27,6 +27,9 @@ export default function TenantDetails() {
         onDelete(tenantId);
         navigate("/tenants");
     }
+
+    const canEdit = (tenant._ownerId === user._id || tenant._id === user._id);    
+    const isAdmin = (tenant._ownerId === user._id);    
     
     return (
     <div className="flex">
@@ -62,8 +65,8 @@ export default function TenantDetails() {
                 </div>
                 <div className="mt-6 flex items-center justify-left gap-x-6 ml-10">
                     <LinkButton text="Back" link="/tenants"/>
-                    <LinkButton text="Edit" link="edit"/>
-                    <SubmitButton text="Delete" onClick={() => onDeleteHandler(tenant._id)}/>
+                    {canEdit && <LinkButton text="Edit" link="edit"/>}
+                    {isAdmin && <SubmitButton text="Delete" onClick={() => onDeleteHandler(tenant._id)}/>}
 			</div>
         </div>
   </div>
