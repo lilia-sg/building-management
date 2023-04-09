@@ -20,9 +20,18 @@ export const getById = async (tenantId) => {
     }  
 };
 
-export const addnewTenant = async (newTenantData, token) => {
+export const addNewTenant = async (newTenantData, token) => {
     try {
         const result = await request.post(`${baseUrl}`, newTenantData, token);
+        return result;
+    } catch (err) {
+        return { errorMessage: err.message }
+    }  
+};
+
+export const editTenant = async (id, udpatedTenantData, token) => {
+    try {
+        const result = await request.put(`${baseUrl}/${id}`, udpatedTenantData, token);
         return result;
     } catch (err) {
         return { errorMessage: err.message }

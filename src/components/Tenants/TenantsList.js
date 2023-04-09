@@ -17,7 +17,7 @@ export default function TenantsList(){
                     </tr>
                 </thead>
                 <tbody>
-                    { tenants.map(x => <TenantItem key={x._id} {...x} />)}
+                    {tenants.length && tenants.map(x => <TenantItem key={x._id} {...x} />)}
                 </tbody>
                 </table>
     );

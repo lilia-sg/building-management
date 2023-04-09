@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import * as tenantService from "../../services/tenantService"
 
@@ -10,8 +10,9 @@ import SubmitButton from "../common/SubmitButton";
 import Sidebar from "../Sidebar/Sidebar";
 
 import { FormKeys } from "../utils/constants";
+import { TenantContext } from "../../contexts/TenantContext";
 
-export default function AddTenant() {
+export default function EditTenant() {
     const emptyFormValues = {
 		[FormKeys.Email]: "",
         [FormKeys.FirstName]:"",
@@ -28,32 +29,44 @@ export default function AddTenant() {
 		values: formValues,
 		onChangeHandler,
 		resetFormValues,
-	} = useForm(emptyFormValues);
+        changeValues
+		} = useForm(emptyFormValues);
 
-    const [unsuccessfulCreation, setUnsuccessfulCreation] = useState(false);
-
+    // TODO: 
+    const [unsuccesfulEdit, setUnsuccesfulEdit] = useState(false);
+    
     const { isAuthenticated, user } = useContext(AuthContext);
+    const { onEdit } = useContext(TenantContext);
 
+
+    const { id } = useParams();
     const navigate = useNavigate();
 
-    const onFormSubmit = (e) => {
-        e.preventDefault();        
-        tenantService
-			.addNewTenant(formValues, user.accessToken)
-			.then((res) => {
+    useEffect(() => {
+        tenantService.getById(id)
+            .then(res => {
+				changeValues(res)
+		});
+    }, [id]);
+
+    const onEditSubmit = (e) => {
+		e.preventDefault();
+
+		tenantService.editTenant(id, formValues, user.accessToken)
+			.then(res => {
 				if (!res.errorMessage) {
-					setUnsuccessfulCreation(false);
-                    navigate("/tenants");
+					setUnsuccesfulEdit(false);
+                    navigate(navigate(`/tenants/${id}`));
 				} else if (res.errorMessage) {
-					setUnsuccessfulCreation(res.errorMessage);
-				}
-			})
-            .catch(err => console.log(err));
+					setUnsuccesfulEdit(res.errorMessage);
+				}})
+			.then()
+			.catch(err => console.log(err));
     }
 
     const onCancel = () => {
         resetFormValues();
-        navigate("/tenants");
+        navigate(`/tenants/${id}`);
     }
 
     return (
@@ -69,7 +82,7 @@ export default function AddTenant() {
 						Please enter information about the tenant
 					</p>
                     {/* TODO: Style error message */}
-                    {unsuccessfulCreation && <h2>{unsuccessfulCreation}</h2>}
+                    {unsuccesfulEdit && <h2>{unsuccesfulEdit}</h2>}
 					<div className="mt-5 grid grid-cols-4 gap-x-6 gap-y-4">
                     <Input
 							type="text"
@@ -150,8 +163,7 @@ export default function AddTenant() {
 
 			<div className="mt-6 flex items-center justify-end gap-x-6">
 				<CancelButton text="Cancel" onClick={onCancel}/>
-				<CancelButton text="Reset" onClick={resetFormValues}/>
-				<SubmitButton text="Save" onClick={onFormSubmit}/>
+				<SubmitButton text="Save changes" onClick={onEditSubmit}/>
 			</div>
 		</form>
         </div>

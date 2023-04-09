@@ -7,6 +7,7 @@ const initalState = {
     tenants: [],
     onDelete: (id) => {},
     onAdd: (tenant) => {},
+    onEdit: (tenant) => {},
 }
 export const TenantContext = createContext(initalState);
 
@@ -20,12 +21,17 @@ export const TenantContextProvider = ({
           .then(result => setTenants(result))
     }, []);
 
+    const onAdd = (tenant) => {
+      //TODO: Add new tenant to the state
+    }
+
     const onDelete = (tenantId) => {
       setTenants(state => state.filter(t => t._id !== tenantId));
     }
 
-    const onAdd = (tenant) => {
-    }
+    const onEdit = (udpatedTenant) => {
+      setTenants(state => state.map(x => x._id === udpatedTenant._id ? udpatedTenant : x))
+  };
 
     return (
         <TenantContext.Provider
@@ -33,6 +39,7 @@ export const TenantContextProvider = ({
             tenants,
             onDelete,
             onAdd,
+            onEdit
           }}
         >
           {children}

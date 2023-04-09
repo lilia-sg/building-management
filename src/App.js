@@ -13,6 +13,7 @@ import AddBuilding from "./components/Building/AddBuilding";
 import Tenants from "./components/Tenants/Tenants";
 import AddTenant from "./components/Tenants/AddTenant";
 import TenantDetails from "./components/Tenants/TenantDetails";
+import EditTenant from "./components/Tenants/EditTenant";
 
 function App() {
 	// TODO: Min width? 
@@ -35,7 +36,7 @@ function App() {
 						<Route path="/building/add" element={<AddBuilding />} />
 						<Route path="/tenants" element={<Tenants />} />
 						<Route path="/tenants/add" element={<AddTenant />} />
-						<Route path="/tenants/:id/edit" element={<AddTenant />} />
+						<Route path="/tenants/:id/edit" element={<EditTenant />} />
 						<Route path="/tenants/:id" element={<TenantDetails />} />
 						<Route path="/news" element={<Test />} />
                     </Route>
