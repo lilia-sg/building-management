@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import Sidebar from "../Sidebar/Sidebar";
 import { AuthContext } from "../../contexts/AuthContext";
+
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function Home() {
     const { isAuthenticated } =	useContext(AuthContext);

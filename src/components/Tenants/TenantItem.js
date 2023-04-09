@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import LinkButton from "../common/LinkButton";
 import LinkButtonSmall from "../common/LinkButtonSmall";
 import { AuthContext } from "../../contexts/AuthContext";
 

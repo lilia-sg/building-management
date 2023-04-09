@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function MainNav() {
-    //TODO: Set state of current page
     const { isAuthenticated } =	useContext(AuthContext);
     
     return (
@@ -20,7 +19,7 @@ export default function MainNav() {
 
                     {isAuthenticated && <Link to="/test" 
                         className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
-                            Calendar
+                            Other
                     </Link>}
 
                     {!isAuthenticated && <Link to="/login" 

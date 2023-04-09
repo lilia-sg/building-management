@@ -3,12 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as tenantService from "../../services/tenantService"
 
+import { TenantContext } from "../../contexts/TenantContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import LinkButton from "../common/LinkButton";
 import Sidebar from "../Sidebar/Sidebar";
 import DetailsItem from "../common/DetailsItem";
 import SubmitButton from "../common/SubmitButton";
-import { TenantContext } from "../../contexts/TenantContext";
-import { AuthContext } from "../../contexts/AuthContext";
 
 export default function TenantDetails() {
     const { id } = useParams();

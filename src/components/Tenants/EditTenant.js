@@ -32,7 +32,6 @@ export default function EditTenant() {
         changeValues
 		} = useForm(emptyFormValues);
 
-    // TODO: 
     const [unsuccesfulEdit, setUnsuccesfulEdit] = useState(false);
     
     const { isAuthenticated, user } = useContext(AuthContext);
@@ -56,6 +55,7 @@ export default function EditTenant() {
 			.then(res => {
 				if (!res.errorMessage) {
 					setUnsuccesfulEdit(false);
+					onEdit(res);
                     navigate(`/tenants/${id}`);
 				} else if (res.errorMessage) {
 					setUnsuccesfulEdit(res.errorMessage);

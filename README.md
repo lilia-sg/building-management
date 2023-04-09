@@ -1,7 +1,20 @@
-# Work in progress
+## Intro
 
+This is a building management application created in React. The application is made for educational purposes.
 
-## Available Scripts
+## Functionalities
+The application supports management of building and tenant information. 
+The building owner can:
+- create a new building
+- create, update and delete information about the tenants
+
+The tenant can:
+- view only basic info for the other tenants
+- edit their own information
+
+Not implements: functionalities regarding viewing and submitting signals for issues in the building, news (notification section), 
+
+## Usage
 
 In the project directory, you can run:
 
@@ -12,11 +25,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 

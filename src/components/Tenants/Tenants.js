@@ -1,12 +1,11 @@
-import { useContext, useState, useEffect } from "react";
-import * as tenantService from "../../services/tenantService"
+import { useContext } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import LinkButton from "../common/LinkButton";
 
 import Sidebar from "../Sidebar/Sidebar";
 import TenantsList from "./TenantsList";
-import { TenantContext, TenantContextProvider } from "../../contexts/TenantContext";
+import { TenantContextProvider } from "../../contexts/TenantContext";
 
 export default function Tenants(){
     const { isAuthenticated } = useContext(AuthContext);

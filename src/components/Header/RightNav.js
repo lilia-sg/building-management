@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import NotificationIcon from "./NotificationIcon";
 import UserProfileMenu from "./UserProfileMenu";
-import { AuthContext } from "../../contexts/AuthContext";
 
 export default function RightNav() {
     const { isAuthenticated } =	useContext(AuthContext);

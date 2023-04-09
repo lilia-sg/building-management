@@ -1,11 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
 import SidebarItem from './SidebarItem';
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
-  const location = useLocation();
-  const { pathname } = location;
-
   return (
     <div>
       {/* Sidebar backdrop (mobile only) */}
