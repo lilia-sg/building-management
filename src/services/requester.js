@@ -1,8 +1,6 @@
 export const request = async (method, url, data, token) => {
 	const options = {};
 
-	// TODO: Error handling
-
 	if (method !== "GET") {
 		options.method = method;
 
@@ -13,7 +11,7 @@ export const request = async (method, url, data, token) => {
 			options.body = JSON.stringify(data);
 		}
 	}
-
+	
 	if (token) {
             options.headers = {
                 ...options.headers,
@@ -22,7 +20,6 @@ export const request = async (method, url, data, token) => {
     }
 
 	const response = await fetch(url, options);
-	// TODO: No content response
 	if (response.status === "204") {
 		return [];
 	}
@@ -45,3 +42,4 @@ export const request = async (method, url, data, token) => {
 export const get = (url, token) => request("GET", url, null, token);
 export const put = (url, data, token) => request("PUT", url, data, token);
 export const post = (url, data, token) => request("POST", url, data, token);
+export const deleteReq = (url, token) => request("DELETE", url, null, token);

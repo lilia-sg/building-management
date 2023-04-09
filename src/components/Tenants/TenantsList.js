@@ -4,10 +4,7 @@ import TenantItem from "./TenantItem";
 
 export default function TenantsList(){
    
-    const { tenants } = useContext(TenantContext);
-
-    console.log(tenants);
-    
+    const { tenants } = useContext(TenantContext);  
 
     return (
         <table className="min-w-full text-left text-sm font-light">

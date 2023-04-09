@@ -20,7 +20,8 @@ export const TenantContextProvider = ({
           .then(result => setTenants(result))
     }, []);
 
-    const onDelete = () => {
+    const onDelete = (tenantId) => {
+      setTenants(state => state.filter(t => t._id !== tenantId));
     }
 
     const onAdd = (tenant) => {

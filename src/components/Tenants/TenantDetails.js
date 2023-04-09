@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as tenantService from "../../services/tenantService"
 
@@ -7,15 +7,26 @@ import LinkButton from "../common/LinkButton";
 import Sidebar from "../Sidebar/Sidebar";
 import DetailsItem from "../common/DetailsItem";
 import SubmitButton from "../common/SubmitButton";
+import { TenantContext } from "../../contexts/TenantContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function TenantDetails() {
     const { id } = useParams();
     const [tenant, setTenant] = useState({});
+    const { onDelete } = useContext(TenantContext);
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         tenantService.getById(id)
             .then(res => setTenant(res));
     }, []);
+
+    const onDeleteHandler = (tenantId) => {
+        tenantService.deleteTenant(tenantId, user.accessToken);
+        onDelete(tenantId);
+        navigate("/tenants");
+    }
     
     return (
     <div className="flex">
@@ -52,7 +63,7 @@ export default function TenantDetails() {
                 <div className="mt-6 flex items-center justify-left gap-x-6 ml-10">
                     <LinkButton text="Back" link="/tenants"/>
                     <LinkButton text="Edit" link="edit"/>
-                    <SubmitButton text="Delete" onClick={(e) => console.log(e)}/>
+                    <SubmitButton text="Delete" onClick={() => onDeleteHandler(tenant._id)}/>
 			</div>
         </div>
   </div>

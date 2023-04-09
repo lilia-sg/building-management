@@ -11,6 +11,15 @@ export const getAll = async () => {
     }  
 };
 
+export const getById = async (tenantId) => {
+    try {
+        const result = await request.get(`${baseUrl}/${tenantId}`);
+        return result;
+    } catch (err) {
+        return { errorMessage: err.message }
+    }  
+};
+
 export const addnewTenant = async (newTenantData, token) => {
     try {
         const result = await request.post(`${baseUrl}`, newTenantData, token);
@@ -20,11 +29,6 @@ export const addnewTenant = async (newTenantData, token) => {
     }  
 };
 
-export const getById = async (tenantId) => {
-    try {
-        const result = await request.get(`${baseUrl}/${tenantId}`);
-        return result;
-    } catch (err) {
-        return { errorMessage: err.message }
-    }  
-};
+export const deleteTenant = (tenantId, token) => {
+    request.deleteReq(`${baseUrl}/${tenantId}`, token);
+}
