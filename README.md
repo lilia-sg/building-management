@@ -13,7 +13,7 @@ The tenant can:
 - view only basic info for the other tenants
 - edit their own information
 
-Not implements: functionalities regarding viewing and submitting signals for issues in the building, news (notification section), 
+Not implemented: functionalities regarding viewing and submitting signals for issues in the building, news (notification section), 
 
 ## Usage
 
