@@ -14,6 +14,7 @@ import Tenants from "./components/Tenants/Tenants";
 import AddTenant from "./components/Tenants/AddTenant";
 import TenantDetails from "./components/Tenants/TenantDetails";
 import EditTenant from "./components/Tenants/EditTenant";
+import { TenantOwner } from "./components/common/TenantOwner";
 
 function App() {
 	// TODO: Min width? 
@@ -36,7 +37,17 @@ function App() {
 						<Route path="/building/add" element={<AddBuilding />} />
 						<Route path="/tenants" element={<Tenants />} />
 						<Route path="/tenants/add" element={<AddTenant />} />
-						<Route path="/tenants/:id/edit" element={<EditTenant />} />
+
+						{/* <Route path='/catalog/:gameId/edit' element={
+                                    <GameOwner>
+                                        <EditGame />
+                                    </GameOwner>
+                                } /> */}
+
+						<Route path="/tenants/:id/edit" element={
+							<TenantOwner>
+								<EditTenant />
+							</TenantOwner>} />
 						<Route path="/tenants/:id" element={<TenantDetails />} />
 						<Route path="/news" element={<Test />} />
                     </Route>

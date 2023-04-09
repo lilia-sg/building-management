@@ -1,12 +1,18 @@
+import { useContext } from "react";
 import LinkButton from "../common/LinkButton";
 import LinkButtonSmall from "../common/LinkButtonSmall";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function TenantItem({
     _id,
     aptNum,
     firstName,
-    lastName
+    lastName,
+    _ownerId
 }) {
+
+    const { user } = useContext(AuthContext);
+    const isOwner = (_ownerId === user._id || _id === user._id);    
 
     return (
         <tr
@@ -15,7 +21,7 @@ export default function TenantItem({
             <td className="whitespace-nowrap px-6 py-4">{firstName}</td>
             <td className="whitespace-nowrap px-6 py-4">{lastName}</td>
             <td className="whitespace-nowrap px-6 py-4">
-                <LinkButtonSmall text="Details" link={`/tenants/${_id}`}/>
+                {isOwner && <LinkButtonSmall text="Details" link={`/tenants/${_id}`}/>}
             </td>
     </tr>
     );

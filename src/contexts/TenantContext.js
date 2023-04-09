@@ -8,6 +8,7 @@ const initalState = {
     onDelete: (id) => {},
     onAdd: (tenant) => {},
     onEdit: (tenant) => {},
+    getTenant: (tenant) => {},
 }
 export const TenantContext = createContext(initalState);
 
@@ -33,13 +34,18 @@ export const TenantContextProvider = ({
       setTenants(state => state.map(x => x._id === udpatedTenant._id ? udpatedTenant : x))
   };
 
+  const getTenant = (tenantId) => {
+    return tenants.find(t => t._id === tenantId);
+};
+
     return (
         <TenantContext.Provider
           value={{
             tenants,
             onDelete,
             onAdd,
-            onEdit
+            onEdit,
+            getTenant
           }}
         >
           {children}

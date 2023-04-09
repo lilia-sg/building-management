@@ -56,7 +56,7 @@ export default function EditTenant() {
 			.then(res => {
 				if (!res.errorMessage) {
 					setUnsuccesfulEdit(false);
-                    navigate(navigate(`/tenants/${id}`));
+                    navigate(`/tenants/${id}`);
 				} else if (res.errorMessage) {
 					setUnsuccesfulEdit(res.errorMessage);
 				}})
