@@ -1,19 +1,18 @@
 import { createContext, useState } from "react";
 
-// TODO: Do I need to keep the whole user or just isLoggedIn? 
-const initalAuthState = {
+const initialState = {
     user: {},
     onLogin: (user) => {},
     onLogout: () => {},
     isAuthenticated: false
 }
-export const AuthContext = createContext(initalAuthState);
+export const AuthContext = createContext(initialState);
 
 export const AuthContextProvider = (props) => {
-    const [user, setUser] = useState(initalAuthState.user);
+    const [user, setUser] = useState(initialState.user);
 
     const logoutHandler = () => {
-        setUser(initalAuthState.user);
+        setUser(initialState.user);
     }
 
     const loginHandler = (user) => {

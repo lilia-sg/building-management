@@ -7,6 +7,8 @@ import Sidebar from "../Sidebar/Sidebar";
 import CancelButton from "../common/CancelButton";
 import Input from "../common/Input";
 import SubmitButton from "../common/SubmitButton";
+import BuildingCard from "./BuildingCard";
+import LinkButton from "../common/LinkButton";
 
 
 export default function Building(){
@@ -15,10 +17,17 @@ export default function Building(){
     return (
         <div className="flex">
             {isAuthenticated && <Sidebar/>}
-            <Link to="add">Add new building</Link>
+                <div className="">
+                    <BuildingCard />
+                </div>
+                
+                <div className="">
+                    <div className=" rounded-lg bg-white text-center shadow-lg dark:bg-neutral-700 m-10">
+                        <div className="border-t-2 border-neutral-100 px-6 py-4 dark:border-neutral-600 dark:text-neutral-50">
+                            <LinkButton text="Create new building" link="add"/>
+                        </div>
+                </div>
+            </div>
         </div>
-
-
-        
     );
 }

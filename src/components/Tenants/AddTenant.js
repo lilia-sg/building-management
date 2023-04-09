@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import * as buildingService from "../../services/buildingService"
+import * as tenantService from "../../services/tenantService"
 
 import { AuthContext } from "../../contexts/AuthContext";
 import CancelButton from "../common/CancelButton";
@@ -11,15 +11,17 @@ import Sidebar from "../Sidebar/Sidebar";
 
 import { FormKeys } from "../utils/constants";
 
-export default function AddBuilding() {
+export default function AddTenant() {
     const emptyFormValues = {
-        [FormKeys.BuildingName]:"",
-        [FormKeys.Address]:"",
-        [FormKeys.City]:"",
-        [FormKeys.Country]:"",
-        [FormKeys.FloorsCount]:"",
-        [FormKeys.AptCount]:"",
+		[FormKeys.Email]: "",
+        [FormKeys.FirstName]:"",
+        [FormKeys.MiddleName]:"",
+        [FormKeys.LastName]:"",
+        [FormKeys.Phone]:"",
+        [FormKeys.AptNum]:"",
+        [FormKeys.Floor]:"",
         [FormKeys.AddInfo]:"",
+        [FormKeys.OccupantsCount]:"",
     };
 
     const {
@@ -36,12 +38,12 @@ export default function AddBuilding() {
 
     const onFormSubmit = (e) => {
         e.preventDefault();        
-        buildingService
-			.addNewBuilding(formValues, user.accessToken)
+        tenantService
+			.addnewTenant(formValues, user.accessToken)
 			.then((res) => {
 				if (!res.errorMessage) {
 					setUnsuccessfulCreation(false);
-                    navigate("/building");
+                    navigate("/tenants");
 				} else if (res.errorMessage) {
 					setUnsuccessfulCreation(res.errorMessage);
 				}
@@ -51,7 +53,7 @@ export default function AddBuilding() {
 
     const onCancel = () => {
         resetFormValues();
-        navigate("/building");
+        navigate("/tenants");
     }
 
     return (
@@ -61,62 +63,77 @@ export default function AddBuilding() {
 			<div className="space-y-10 pt-10 pl-10 mx-auto max-w-xl">
 				<div className="border-b border-gray-900/10 pb-10">
 					<h2 className="text-base font-semibold leading-7 text-gray-900">
-						Building Information
+						Tenant Information
 					</h2>
                     <p className="mt-1 text-sm leading-6 text-gray-600">
-						Please enter information about the building.
+						Please enter information about the tenant
 					</p>
                     {/* TODO: Style error message */}
                     {unsuccessfulCreation && <h2>{unsuccessfulCreation}</h2>}
 					<div className="mt-5 grid grid-cols-4 gap-x-6 gap-y-4">
-						<Input
+                    <Input
 							type="text"
-							name={FormKeys.BuildingName}
-							displayLabel="Name"
-							size="xl"
-                            onChangeHandler={onChangeHandler}
-                            value={formValues[FormKeys.BuildingName]}
-						/>
-                        <Input
-							type="text"
-							name={FormKeys.Address}
-							displayLabel="Address"
-							size="xl"
-                            onChangeHandler={onChangeHandler}
-                            value={formValues[FormKeys.Address]}
-						/>
-						<Input
-							type="text"
-							name={FormKeys.City}
-							displayLabel="City"
+							name={FormKeys.FirstName}
+							displayLabel="First Name"
 							size="med"
                             onChangeHandler={onChangeHandler}
-                            value={formValues[FormKeys.City]}
+                            value={formValues[FormKeys.FirstName]}
 						/>
-                        {/* TODO: Add countries as drop-down menu */}
 						<Input
 							type="text"
-							name={FormKeys.Country}
-							displayLabel="Country"
+							name={FormKeys.MiddleName}
+							displayLabel="Middle Name"
 							size="med"
                             onChangeHandler={onChangeHandler}
-                            value={formValues[FormKeys.Country]}
+                            value={formValues[FormKeys.MiddleName]}
+						/>
+						<Input
+							type="text"
+							name={FormKeys.LastName}
+							displayLabel="Last Name"
+							size="xl"
+                            onChangeHandler={onChangeHandler}
+                            value={formValues[FormKeys.LastName]}
+						/>
+						<Input
+							type="text"
+							name={FormKeys.Phone}
+							displayLabel="Phone nr"
+							size="xl"
+                            onChangeHandler={onChangeHandler}
+                            value={formValues[FormKeys.Phone]}
+						/>
+						<Input
+							type="text"
+							name={FormKeys.Email}
+							displayLabel="Email"
+							size="xl"
+                            onChangeHandler={onChangeHandler}
+                            value={formValues[FormKeys.Email]}
 						/>
 						<Input
 							type="number"
-							name={FormKeys.FloorsCount}
-							displayLabel="Floors"
+							name={FormKeys.Floor}
+							displayLabel="Floor"
 							size="med"
                             onChangeHandler={onChangeHandler}
-                            value={formValues[FormKeys.FloorsCount]}
+                            value={formValues[FormKeys.Floor]}
 						/>
 						<Input
 							type="number"
-							name={FormKeys.AptCount}
-							displayLabel="Number of apartments"
+							name={FormKeys.AptNum}
+							displayLabel="Apartment"
 							size="med"
                             onChangeHandler={onChangeHandler}
-                            value={formValues[FormKeys.AptCount]}
+                            value={formValues[FormKeys.AptNum]}
+						/>
+						<Input
+							type="number"
+							name={FormKeys.OccupantsCount}
+							displayLabel="Number of occupants"
+							size="med"
+                            onChangeHandler={onChangeHandler}
+                            value={formValues[FormKeys.OccupantsCount]}
 						/>
 						<Input
 							type="text"

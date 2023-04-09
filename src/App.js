@@ -10,6 +10,9 @@ import Test from "./components/Test";
 import HeaderTest from "./components/Header/HeaderTest";
 import Building from "./components/Building/Building";
 import AddBuilding from "./components/Building/AddBuilding";
+import Tenants from "./components/Tenants/Tenants";
+import AddTenant from "./components/Tenants/AddTenant";
+import TenantDetails from "./components/Tenants/TenantDetails";
 
 function App() {
 	// TODO: Min width? 
@@ -30,8 +33,11 @@ function App() {
 						<Route path="/signals" element={<Test />} />
 						<Route path="/building" element={<Building />} />
 						<Route path="/building/add" element={<AddBuilding />} />
+						<Route path="/tenants" element={<Tenants />} />
+						<Route path="/tenants/add" element={<AddTenant />} />
+						<Route path="/tenants/:id/edit" element={<AddTenant />} />
+						<Route path="/tenants/:id" element={<TenantDetails />} />
 						<Route path="/news" element={<Test />} />
-						<Route path="/tenants" element={<Test />} />
                     </Route>
 
 				</Routes>

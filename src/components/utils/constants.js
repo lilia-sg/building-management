@@ -10,7 +10,10 @@ export const FormKeys = {
     City: "city",
     Country: "country",
     BuildingName: "buildingName",
-    Floors: "floors",
+    FloorsCount: "floorCount",
+    Floor: "floor",
     AptCount: "aptCount",
-    AddInfo: "AddInfo",
+    AptNum: "aptNum",
+    AddInfo: "addInfo",
+    OccupantsCount: "occupants",
 }
