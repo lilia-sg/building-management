@@ -17,11 +17,11 @@ export default function Building(){
                 </div>
                 
                 <div className="">
-                    <div className=" rounded-lg bg-white text-center shadow-lg dark:bg-neutral-700 m-10">
+                    {/* <div className=" rounded-lg bg-white text-center shadow-lg dark:bg-neutral-700 m-10">
                         <div className="border-t-2 border-neutral-100 px-6 py-4 dark:border-neutral-600 dark:text-neutral-50">
                             <LinkButton text="Create new building" link="add"/>
                         </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
