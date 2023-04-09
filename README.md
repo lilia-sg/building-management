@@ -1,6 +1,7 @@
 ## Intro
 
-This is a building management application created in React. The application is made for educational purposes.
+This is a building management application made for educational purposes.
+The application is created in React and relies on the SoftUni Practice server as a back-end service.
 
 ## Functionalities
 The application supports management of building and tenant information. 
